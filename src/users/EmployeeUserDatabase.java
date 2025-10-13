@@ -3,7 +3,15 @@ import java.io.*;
 import java.util.*;
 public class EmployeeUserDatabase {
 
-    public static void clearFileContent(String filename) throws IOException {
+    private ArrayList<EmployeeUser> records;
+    private String filename;
+
+    public EmployeeUserDatabase(String filename) {
+           records = new ArrayList<EmployeeUser>();
+           this.filename = filename;
+    }
+
+     public static void clearFileContent(String filename) throws IOException {
         File file=new File(filename);
         try (FileWriter fileWriter = new FileWriter(file, false)) {
             fileWriter.write("");
@@ -22,16 +30,7 @@ public class EmployeeUserDatabase {
         return eu;
     }
 
-    private ArrayList<EmployeeUser> records;
-    private String filename;
-
-    public EmployeeUserDatabase(String filename) {
-           this.filename = filename;
-    }
-
     public void readFromFile() {
-        records = new ArrayList<EmployeeUser>();
-
         try (BufferedReader br = new BufferedReader(new FileReader(this.filename))) {
             String line;
             while ((line = br.readLine()) != null) {
