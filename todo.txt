@@ -1,0 +1,78 @@
+Class / Status / DoneBy
+
+1- EmployeeUser - COMPLETE - Taha
+	1- constructor
+ 	2- lineRepresentation()
+	3- getSearchKey()
+2- EmployeeUserDatabase - COMPLETE - Mazen
+	1- constructor
+	2- clearFileContent()
+	3- createEmployeeUser()
+	4- readFromFile()
+	5- createRecordFrom()
+	6- returnAllRecords()
+	7- contains()
+	8- getRecord()
+	9- insertRecord()
+	10- deleteRecord()
+	11- saveToFile()
+3- AdminRole - Ongoing - Nada
+	1- constructor
+	2- addEmployee()
+	3- EmployeeUser[]
+	4- removeEmployee()
+	5- logout()
+4- Product - COMPLETE - Youssef
+	1- constructor
+	2- getQuantity()
+	3- setQuantity()
+	4- lineRepresentation()
+	5- getSearchKey()
+5- ProductDataBase - Ongoing - Mazen
+	1- constructor
+	2- readFromFile()
+	3- createRecordFrom()
+	4- returnAllRecords()
+	5- contains()
+	6- getRecord()
+	7- insertRecord()
+	8- deleteRecord()
+	9- saveToFile()
+6- CustomerProduct - Ongoing - Youssef
+	1- constructor
+	2- getCustomerSSN()
+	3- getProductID()
+	4- getPurchaseDate()
+	5- lineRepresentation()
+	6- isPaid()
+	7- setPaid()
+	8- getSearchKey()
+7- CustomerProductDataBase - Ongoing - Taha
+	1- constructor
+	2- readFromFile()
+	3- createRecordFrom()
+	4- returnAllRecords()
+	5- contains()
+	6- getRecord()
+	7- insertRecord()
+	8- deleteRecord()
+	9- saveToFile()
+8- EmployeeRole - Ongoing - Taha
+	1- constructor
+	2- addProduct()
+	3- getListOfProducts()
+	4- getListOfPurchasingOperations()
+	5- purchaseProduct()
+	6- returnProduct()
+	7- applyPayment()
+	8- logout()
+
+
+
+
+
+
+
+
+
+
