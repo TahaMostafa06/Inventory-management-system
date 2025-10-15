@@ -38,7 +38,7 @@ Class / Status / DoneBy
 	7- insertRecord()
 	8- deleteRecord()
 	9- saveToFile()
-6- CustomerProduct - Ongoing - Youssef
+6- CustomerProduct - COMPLETE - Youssef
 	1- constructor
 	2- getCustomerSSN()
 	3- getProductID()
