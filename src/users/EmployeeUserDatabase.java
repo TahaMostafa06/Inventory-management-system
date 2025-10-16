@@ -85,7 +85,7 @@ public class EmployeeUserDatabase {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.filename))) {
             for (EmployeeUser employee : records) {
                 writer.write(employee.lineRepresentation());
-                writer.newLine(); // Adds a new line
+                writer.newLine();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
