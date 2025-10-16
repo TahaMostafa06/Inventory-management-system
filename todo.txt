@@ -28,7 +28,7 @@ Class / Status / DoneBy
 	3- setQuantity()
 	4- lineRepresentation()
 	5- getSearchKey()
-5- ProductDataBase - Ongoing - Mazen
+5- ProductDataBase - COMPLETE - Mazen
 	1- constructor
 	2- readFromFile()
 	3- createRecordFrom()
