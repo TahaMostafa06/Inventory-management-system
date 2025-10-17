@@ -14,7 +14,11 @@ public class Product {
 		this.quantity = quantity;
 		this.price = price;
 	}
-
+        
+        public float getPrice() {
+		return this.price;
+	}
+        
 	public int getQuantity() {
 		return this.quantity;
 	}
