@@ -35,12 +35,10 @@ public class CustomerProduct{
 	}
 
 	public void setPaid(boolean paid) {
-		// TODO: check if it must be changeable only once
-		this.paid = paid;
+		if (paid) this.paid = true; // only sets once
 	}
 
 	public String getSearchKey() {
-		// TODO: ask TA for specs on this
 		return this.productID;
 	}
 }
