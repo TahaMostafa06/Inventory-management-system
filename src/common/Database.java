@@ -13,7 +13,7 @@ public abstract class Database<RecordType extends Record> {
         this.filename = filename;
         this.readFromFile();
     }
-    
+
     // C] Methods
 
     // Getters
@@ -53,13 +53,11 @@ public abstract class Database<RecordType extends Record> {
         return false;
     }
 
-
     // Abstract methods
-    abstract public void readFromFile();
+    abstract public void readFromFile(); // TODO: make concrete
 
-    abstract public void saveToFile();
+    abstract public void saveToFile(); // TODO: make concrete
 
     abstract public RecordType createRecordFrom(String line);
-
 
 }
