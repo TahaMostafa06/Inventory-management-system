@@ -81,8 +81,8 @@ public class EmployeeUserDatabase {
     }
 
     public void saveToFile() throws IOException {
-        clearFileContent(this.filename); //clear and rewrite each emplyee user seperately on each line
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.filename))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.filename,append=false))) {
+            writer.write("");  //clear and rewrite each emplyee user seperately on each line
             for (EmployeeUser employee : records) {
                 writer.write(employee.lineRepresentation());
                 writer.newLine();

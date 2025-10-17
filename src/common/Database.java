@@ -54,9 +54,22 @@ public abstract class Database<RecordType extends Record> {
     }
 
     // Abstract methods
-    abstract public void readFromFile(); // TODO: make concrete
 
-    abstract public void saveToFile(); // TODO: make concrete
+    abstract public void readFromFile() throws RuntimeException{
+        try (BufferedReader br = new BufferedReader(new FileReader(this.filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                RecordType record=createRecordFrom(line)
+                this.records.add(record);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    abstract public void saveToFile(){
+
+    }
 
     abstract public RecordType createRecordFrom(String line);
 
