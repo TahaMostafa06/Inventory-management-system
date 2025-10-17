@@ -1,5 +1,10 @@
 package common;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Database<RecordType extends Record> {
@@ -53,13 +58,11 @@ public abstract class Database<RecordType extends Record> {
         return false;
     }
 
-    // Abstract methods
-
-    abstract public void readFromFile() throws RuntimeException{
-        try (BufferedReader br = new BufferedReader(new FileReader(this.filename))) {
+    public void readFromFile() throws RuntimeException {
+        try (var br = new BufferedReader(new FileReader(this.filename))) {
             String line;
             while ((line = br.readLine()) != null) {
-                RecordType record=createRecordFrom(line)
+                var record = createRecordFrom(line);
                 this.records.add(record);
             }
         } catch (IOException e) {
@@ -67,10 +70,19 @@ public abstract class Database<RecordType extends Record> {
         }
     }
 
-    abstract public void saveToFile(){
-
+    public void saveToFile(){
+        try (var writer = new BufferedWriter(new FileWriter(this.filename,false))) {
+            writer.write("");  //clear and rewrite each emplyee user seperately on each line
+            for (var r : this.records) {
+                writer.write(r.lineRepresentation());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    // Abstract methods
     abstract public RecordType createRecordFrom(String line);
 
 }
