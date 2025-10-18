@@ -1,6 +1,7 @@
 package common;
 
-public abstract class Record {
-    abstract public String lineRepresentation();
-    abstract public String getSearchKey();
+public interface Record {
+    public String lineRepresentation();
+
+    public String getSearchKey();
 }

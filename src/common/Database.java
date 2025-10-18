@@ -70,9 +70,9 @@ public abstract class Database<RecordType extends Record> {
         }
     }
 
-    public void saveToFile(){
-        try (var writer = new BufferedWriter(new FileWriter(this.filename,false))) {
-            writer.write("");  //clear and rewrite each emplyee user seperately on each line
+    public void saveToFile() {
+        try (var writer = new BufferedWriter(new FileWriter(this.filename, false))) {
+            writer.write(""); // clear and rewrite each emplyee user seperately on each line
             for (var r : this.records) {
                 writer.write(r.lineRepresentation());
                 writer.newLine();
