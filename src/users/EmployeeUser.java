@@ -3,7 +3,7 @@ package users;
 import common.Record;
 
 public class EmployeeUser implements Record {
-	private String employeeID, name, email, address, phoneNumber;
+	private final String employeeID, name, email, address, phoneNumber;
 
 	public EmployeeUser(String employeeID, String name, String email, String address,
 			String phoneNumber) {
