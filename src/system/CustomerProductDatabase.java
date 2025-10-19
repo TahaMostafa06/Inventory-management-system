@@ -1,16 +1,18 @@
 package InventoryManagementSystem;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class CustomerProductDatabase {
 
     
     private static class CustomerProduct {
-
         public CustomerProduct(String cID, String pID, SimpleDateFormat dmy, boolean pay) {
         }
     }
@@ -20,7 +22,7 @@ public class CustomerProductDatabase {
     private String filename;
 
     public CustomerProductDatabase(String filename) {
-        this.records = records;
+        records = new ArrayList<>;
         this.filename = filename;
     }
 
@@ -41,5 +43,37 @@ public class CustomerProductDatabase {
     CustomerProduct p = new CustomerProduct(cID,pID,dmy,pay);    
     return p;
     }
-    
+    public ArrayList<CustomerProduct> returnAllRecords(){
+        return records;
+    }
+    public boolean contains(String key ){
+        for (int i = 0 ; i < records.size() ; i++ ){
+            CustomerProduct p = records.get(i);
+            if(key.equals(p.getSearchKey()))
+                return true;
+        }
+        return false;
+    }
+    public CustomerProduct getRecord(String key){
+       for (int i = 0 ; i < records.size() ; i++ ){
+            CustomerProduct p = records.get(i);
+            if(key.equals(p.getSearchKey()))
+                return p;
+        }
+       return;
+    }
+    public void insertRecord(CustomerProduct record){
+        records.add(record);
+    }
+    public void deleteRecord(String key){
+        records.remove(key)
+    }
+    public void saveToFile(){
+        BufferedWriter bf = new BufferedWriter(new FileWriter(filename));
+        for (int i = 0 ; i < records.size() ; i++ ){
+            CustomerProduct p = records.get(i);
+            bw.write(p.getSearchKey());
+        }
+        bw.close;
+    }
 }
