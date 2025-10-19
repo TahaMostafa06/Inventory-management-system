@@ -20,12 +20,11 @@ public class EmployeeRole {
     }
 
     public Product[] getListOfProducts() {
-        // momken ne3ml (Product[]) fel awel
-        return productsDatabase.returnAllRecords().toArray(Product[]::new);
+        return (Product[]) productsDatabase.returnAllRecords().toArray();
     }
 
     public CustomerProduct[] getListOfPurchasingOperations() {
-        return customerProductDatabase.returnAllRecords().toArray(CustomerProduct[]::new);
+        return (CustomerProduct[]) customerProductDatabase.returnAllRecords().toArray();
     }
 
     public boolean purchaseProduct(String customerSSN, String productID, LocalDate purchaseDate) {
