@@ -16,6 +16,7 @@ public abstract class Database<RecordType extends Record> {
     // B] Constructor blueprint
     public Database(String filename) {
         this.filename = filename;
+        this.records = new ArrayList<RecordType>(0);
         this.readFromFile();
     }
 
