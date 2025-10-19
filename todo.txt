@@ -16,7 +16,7 @@ Class / Status / DoneBy
 	9- insertRecord()
 	10- deleteRecord()
 	11- saveToFile()
-3- AdminRole - Ongoing - Nada
+3- AdminRole - COMPLETE - Nada
 	1- constructor
 	2- addEmployee()
 	3- EmployeeUser[]
@@ -47,7 +47,7 @@ Class / Status / DoneBy
 	6- isPaid()
 	7- setPaid()
 	8- getSearchKey()
-7- CustomerProductDataBase - Ongoing - Nada
+7- CustomerProductDataBase - COMPLETE - Nada
 	1- constructor
 	2- readFromFile()
 	3- createRecordFrom()
