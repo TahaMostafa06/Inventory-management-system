@@ -1,7 +1,6 @@
 package users;
 
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
 
 import common.Database;
 
@@ -12,13 +11,6 @@ public class EmployeeUserDatabase extends Database<EmployeeUser> {
 
     public EmployeeUserDatabase(String filename) {
         super(filename);
-    }
-
-    public static void clearFileContent(String filename) throws IOException {
-        File file = new File(filename);
-        try (FileWriter fileWriter = new FileWriter(file, false)) {
-            fileWriter.write("");
-        }
     }
 
     public EmployeeUser createRecordFrom(String text) {
