@@ -1,5 +1,7 @@
 package users;
 
+import java.io.IOException;
+
 public class AdminRole {
     private EmployeeUserDatabase database;
 
@@ -21,7 +23,7 @@ public class AdminRole {
         database.deleteRecord(key);
     }
 
-    public void logout() {
+    public void logout() throws IOException {
         database.saveToFile();
     }
 }

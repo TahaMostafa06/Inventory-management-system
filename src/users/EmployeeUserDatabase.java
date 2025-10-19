@@ -3,13 +3,14 @@ package users;
 import java.util.ArrayList;
 
 import common.Database;
+import java.io.IOException;
 
 public class EmployeeUserDatabase extends Database<EmployeeUser> {
 
     private ArrayList<EmployeeUser> records;
     private String filename;
 
-    public EmployeeUserDatabase(String filename) {
+    public EmployeeUserDatabase(String filename) throws IOException {
         super(filename);
     }
 

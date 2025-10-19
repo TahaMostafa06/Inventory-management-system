@@ -4,16 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import common.Database;
+import java.io.IOException;
 
 public class CustomerProductDatabase extends Database<CustomerProduct> {
 
     private ArrayList<CustomerProduct> records;
     private String filename;
 
-    public CustomerProductDatabase(String filename) {
+    public CustomerProductDatabase(String filename) throws IOException {
         super(filename);
     }
 
+    @Override
     public CustomerProduct createRecordFrom(String line) {
         String[] tokens = line.split(",");
         String cID = tokens[0];

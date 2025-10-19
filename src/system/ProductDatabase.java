@@ -3,16 +3,18 @@ package system;
 import java.util.ArrayList;
 
 import common.Database;
+import java.io.IOException;
 
 public class ProductDatabase extends Database<Product> {
 
     private ArrayList<Product> records;
     private String filename;
 
-    public ProductDatabase(String filename) {
+    public ProductDatabase(String filename) throws IOException {
         super(filename);
     }
 
+    @Override
     public Product createRecordFrom(String line) {
         String comma_regex = "[,]"; /*
                                      * method that helps in readFromFile and createRecordFrom

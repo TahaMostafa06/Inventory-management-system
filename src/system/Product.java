@@ -17,6 +17,10 @@ public class Product implements Record {
 		this.price = price;
 	}
 
+	public float getPrice() {
+		return this.price;
+	}
+
 	public int getQuantity() {
 		return this.quantity;
 	}
@@ -33,10 +37,4 @@ public class Product implements Record {
 	public String getSearchKey() {
 		return this.productID;
 	}
-
-	// Extra functions
-	public float getPrice() {
-		return this.price;
-	}
-
 }

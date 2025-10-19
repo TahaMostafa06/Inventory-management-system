@@ -1,5 +1,6 @@
 package system;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class EmployeeRole {
@@ -76,7 +77,7 @@ public class EmployeeRole {
         return false;
     }
 
-    public void logout() {
+    public void logout() throws IOException {
         try {
             customerProductDatabase.saveToFile();
             productsDatabase.saveToFile();

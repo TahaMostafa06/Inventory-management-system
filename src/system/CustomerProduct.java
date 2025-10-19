@@ -29,6 +29,7 @@ public class CustomerProduct implements Record {
 		return this.purchaseDate;
 	}
 
+        @Override
 	public String lineRepresentation() {
 		// TODO: check date format
 		return this.customerSSN + ',' + this.productID + ',' + this.purchaseDate;
@@ -43,6 +44,7 @@ public class CustomerProduct implements Record {
 			this.paid = true; // only sets once
 	}
 
+        @Override
 	public String getSearchKey() {
 		return this.productID;
 	}

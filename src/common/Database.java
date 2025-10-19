@@ -14,9 +14,9 @@ public abstract class Database<RecordType extends Record> {
     protected final String filename;
 
     // B] Constructor blueprint
-    public Database(String filename) {
+    public Database(String filename) throws IOException {
         this.filename = filename;
-        this.records = new ArrayList<RecordType>(0);
+        this.records = new ArrayList<>(0);
         this.readFromFile();
     }
 
@@ -59,7 +59,7 @@ public abstract class Database<RecordType extends Record> {
         return false;
     }
 
-    public void readFromFile() throws RuntimeException {
+    public final void readFromFile() throws IOException {
         try (var br = new BufferedReader(new FileReader(this.filename))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -67,19 +67,19 @@ public abstract class Database<RecordType extends Record> {
                 this.records.add(record);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IOException(e);
         }
     }
 
-    public void saveToFile() throws RuntimeException {
+    public void saveToFile() throws IOException {
         try (var writer = new BufferedWriter(new FileWriter(this.filename, false))) {
             writer.write(""); // clear and rewrite each emplyee user seperately on each line
             for (var r : this.records) {
                 writer.write(r.lineRepresentation());
                 writer.newLine();
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new IOException(e);
         }
     }
 
