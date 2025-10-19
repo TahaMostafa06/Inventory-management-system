@@ -60,6 +60,7 @@ public abstract class Database<RecordType extends Record> {
     }
 
     public final void readFromFile() throws IOException {
+        this.records = new ArrayList<> ();
         try (var br = new BufferedReader(new FileReader(this.filename))) {
             String line;
             while ((line = br.readLine()) != null) {

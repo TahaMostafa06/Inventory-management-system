@@ -1,0 +1,1 @@
+P2568,Laptop,Apple,TechSupplier,9,1500.0

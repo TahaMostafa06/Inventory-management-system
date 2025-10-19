@@ -7,7 +7,7 @@ public class EmployeeRole {
     private ProductDatabase productsDatabase;
     private CustomerProductDatabase customerProductDatabase;
 
-    public EmployeeRole() {
+    public EmployeeRole() throws IOException {
         this.productsDatabase = new ProductDatabase("Products.txt");
         this.customerProductDatabase = new CustomerProductDatabase("CustomersProducts.txt");
     }
@@ -20,11 +20,11 @@ public class EmployeeRole {
     }
 
     public Product[] getListOfProducts() {
-        return (Product[]) productsDatabase.returnAllRecords().toArray();
+        return productsDatabase.returnAllRecords().toArray(Product[]::new);
     }
 
     public CustomerProduct[] getListOfPurchasingOperations() {
-        return (CustomerProduct[]) customerProductDatabase.returnAllRecords().toArray();
+        return customerProductDatabase.returnAllRecords().toArray(CustomerProduct[]::new);
     }
 
     public boolean purchaseProduct(String customerSSN, String productID, LocalDate purchaseDate) {

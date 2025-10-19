@@ -1,8 +1,9 @@
 package system;
 
-import java.time.LocalDate;
+import java.time.*;
 
 import common.Record;
+import java.time.format.DateTimeFormatter;
 
 public class CustomerProduct implements Record {
 	private final String customerSSN;
@@ -31,8 +32,9 @@ public class CustomerProduct implements Record {
 
         @Override
 	public String lineRepresentation() {
-		// TODO: check date format
-		return this.customerSSN + ',' + this.productID + ',' + this.purchaseDate;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                return this.customerSSN + ',' + this.productID + ',' + this.purchaseDate.format(formatter) + "," + this.isPaid();
+                
 	}
 
 	public boolean isPaid() {
@@ -46,6 +48,7 @@ public class CustomerProduct implements Record {
 
         @Override
 	public String getSearchKey() {
-		return this.productID;
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		return this.customerSSN + "," + this.productID + "," + this.purchaseDate.format(formatter);
 	}
 }

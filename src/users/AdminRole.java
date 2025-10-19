@@ -15,8 +15,8 @@ public class AdminRole {
         database.insertRecord(p1);
     }
 
-    public EmployeeUser[] getListOfEmployees(String Employees) {
-        return (EmployeeUser[]) database.returnAllRecords().toArray();
+    public EmployeeUser[] getListOfEmployees() {
+        return database.returnAllRecords().toArray(EmployeeUser[]::new);
     }
 
     public void removeEmployee(String key) {
