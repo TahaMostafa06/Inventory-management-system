@@ -1,12 +1,14 @@
 package system;
 
-public class Product {
+import common.Record;
+
+public class Product implements Record {
 	private final String productID, productName, manufacturerName, supplierName;
 	private int quantity;
 	private final float price;
 
-	public Product(String productID, String productName, String manufacturerName, String supplierName, int quantity,
-			float price) {
+	public Product(String productID, String productName, String manufacturerName,
+			String supplierName, int quantity, float price) {
 		this.productID = productID;
 		this.productName = productName;
 		this.manufacturerName = manufacturerName;
@@ -14,11 +16,11 @@ public class Product {
 		this.quantity = quantity;
 		this.price = price;
 	}
-        
-        public float getPrice() {
+
+	public float getPrice() {
 		return this.price;
 	}
-        
+
 	public int getQuantity() {
 		return this.quantity;
 	}
@@ -28,8 +30,8 @@ public class Product {
 	}
 
 	public String lineRepresentation() {
-		return this.productID + ',' + this.productName + ',' + this.manufacturerName + ',' + this.supplierName + ','
-				+ this.quantity + ',' + this.price;
+		return this.productID + ',' + this.productName + ',' + this.manufacturerName + ','
+				+ this.supplierName + ',' + this.quantity + ',' + this.price;
 	}
 
 	public String getSearchKey() {
