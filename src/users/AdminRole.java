@@ -13,15 +13,15 @@ public class AdminRole {
         database.insertRecord(p1);
     }
 
-    public EmployeeUser[] getListOfEmployees(String Employees) throws FileNotFoundException {
-        return database.returnAllRecords();
+    public EmployeeUser[] getListOfEmployees(String Employees) {
+        return (EmployeeUser[]) database.returnAllRecords().toArray();
     }
 
-    public void removeEmployee(String key) throws IOException {
+    public void removeEmployee(String key) {
         database.deleteRecord(key);
     }
 
-    public void logout(){
-        database.saveToFile()
+    public void logout() {
+        database.saveToFile();
     }
 }
