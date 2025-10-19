@@ -1,14 +1,9 @@
 package system;
 
-import java.util.ArrayList;
-
 import common.Database;
 import java.io.IOException;
 
 public class ProductDatabase extends Database<Product> {
-
-    private ArrayList<Product> records;
-    private String filename;
 
     public ProductDatabase(String filename) throws IOException {
         super(filename);
@@ -16,17 +11,13 @@ public class ProductDatabase extends Database<Product> {
 
     @Override
     public Product createRecordFrom(String line) {
-        String comma_regex = "[,]"; /*
-                                     * method that helps in readFromFile and createRecordFrom
-                                     * methods
-                                     */
-        String[] arr = line.split(comma_regex);
-        String id = arr[0];
-        String name = arr[1];
-        String manufacturerName = arr[2];
-        String supplierName = arr[3];
-        int quantity = Integer.parseInt(arr[4]);
-        float price = Float.parseFloat(arr[5]);
+        String[] tokens = line.split("[,]");
+        var id = tokens[0];
+        var name = tokens[1];
+        var manufacturerName = tokens[2];
+        var supplierName = tokens[3];
+        var quantity = Integer.parseInt(tokens[4]);
+        var price = Float.parseFloat(tokens[5]);
         return new Product(id, name, manufacturerName, supplierName, quantity, price);
     }
 

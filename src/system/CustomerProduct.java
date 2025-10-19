@@ -30,11 +30,12 @@ public class CustomerProduct implements Record {
 		return this.purchaseDate;
 	}
 
-        @Override
+	@Override
 	public String lineRepresentation() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                return this.customerSSN + ',' + this.productID + ',' + this.purchaseDate.format(formatter) + "," + this.isPaid();
-                
+		return this.customerSSN + ',' + this.productID + ',' + this.purchaseDate.format(formatter)
+				+ "," + this.isPaid();
+
 	}
 
 	public boolean isPaid() {
@@ -46,9 +47,9 @@ public class CustomerProduct implements Record {
 			this.paid = true; // only sets once
 	}
 
-        @Override
+	@Override
 	public String getSearchKey() {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		return this.customerSSN + "," + this.productID + "," + this.purchaseDate.format(formatter);
 	}
 }

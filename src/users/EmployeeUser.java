@@ -14,6 +14,7 @@ public class EmployeeUser implements Record {
 		this.phoneNumber = phoneNumber;
 	}
 
+	@Override
 	public String lineRepresentation() {
 		String representation = "";
 		representation += employeeID + ",";
@@ -24,6 +25,7 @@ public class EmployeeUser implements Record {
 		return representation;
 	}
 
+	@Override
 	public String getSearchKey() {
 		return this.employeeID;
 	}

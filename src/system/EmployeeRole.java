@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class EmployeeRole {
-    private ProductDatabase productsDatabase;
-    private CustomerProductDatabase customerProductDatabase;
+    private final ProductDatabase productsDatabase;
+    private final CustomerProductDatabase customerProductDatabase;
 
     public EmployeeRole() throws IOException {
         this.productsDatabase = new ProductDatabase("Products.txt");
@@ -14,7 +14,7 @@ public class EmployeeRole {
 
     public void addProduct(String productID, String productName, String manufacturerName,
             String supplierName, int quantity, float price) {
-        Product item = new Product(productID, productName, manufacturerName, supplierName, quantity,
+        var item = new Product(productID, productName, manufacturerName, supplierName, quantity,
                 price);
         this.productsDatabase.insertRecord(item);
     }
@@ -54,7 +54,8 @@ public class EmployeeRole {
         Product[] ProductList = this.getListOfProducts();
         for (int i = 0; i < ProductList.length; i++) {
             if (ProductList[i].getSearchKey().equals(productID)) {
-                this.productsDatabase.getRecord(ProductList[i].getSearchKey()).setQuantity(ProductList[i].getQuantity() + 1);
+                this.productsDatabase.getRecord(ProductList[i].getSearchKey())
+                        .setQuantity(ProductList[i].getQuantity() + 1);
                 this.customerProductDatabase.deleteRecord(CustomerItem.getSearchKey());
                 return ProductList[i].getPrice();
             }
@@ -76,11 +77,7 @@ public class EmployeeRole {
     }
 
     public void logout() throws IOException {
-        try {
-            customerProductDatabase.saveToFile();
-            productsDatabase.saveToFile();
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
-        }
+        customerProductDatabase.saveToFile();
+        productsDatabase.saveToFile();
     }
 }

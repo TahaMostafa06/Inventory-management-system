@@ -9,26 +9,25 @@ import java.util.ArrayList;
 
 public abstract class Database<RecordType extends Record> {
 
-    // A] Fields - remember to turn protected -> private when subclassing
-    protected ArrayList<RecordType> records;
-    protected final String filename;
+    // A] Fields
+    private ArrayList<RecordType> records;
+    private final String filename;
 
     // B] Constructor blueprint
     public Database(String filename) throws IOException {
         this.filename = filename;
-        this.records = new ArrayList<>(0);
         this.readFromFile();
     }
 
     // C] Methods
 
     // Getters
-    public ArrayList<RecordType> returnAllRecords() {
+    public final ArrayList<RecordType> returnAllRecords() {
         // discuss whether returning a deep clone is better
         return this.records;
     }
 
-    public RecordType getRecord(String key) {
+    public final RecordType getRecord(String key) {
         for (var r : this.records) {
             if (r.getSearchKey().equals(key)) {
                 return r;
@@ -38,11 +37,11 @@ public abstract class Database<RecordType extends Record> {
     }
 
     // Setters
-    public void insertRecord(RecordType record) {
+    public final void insertRecord(RecordType record) {
         this.records.add(record);
     }
 
-    public void deleteRecord(String key) {
+    public final void deleteRecord(String key) {
         var query = getRecord(key);
         if (query != null) {
             this.records.remove(query);
@@ -50,7 +49,7 @@ public abstract class Database<RecordType extends Record> {
     }
 
     // Concrete methods
-    public boolean contains(String key) {
+    public final boolean contains(String key) {
         for (var r : this.records) {
             if (r.getSearchKey().equals(key)) {
                 return true;
@@ -60,19 +59,25 @@ public abstract class Database<RecordType extends Record> {
     }
 
     public final void readFromFile() throws IOException {
-        this.records = new ArrayList<> ();
+        var tempRecords = new ArrayList<RecordType>(0);
+        if (this.records == null)
+            this.records = tempRecords;
+        // Context manager to automagically close resources
         try (var br = new BufferedReader(new FileReader(this.filename))) {
             String line;
             while ((line = br.readLine()) != null) {
                 var record = createRecordFrom(line);
-                this.records.add(record);
+                tempRecords.add(record);
             }
         } catch (IOException e) {
+            // RuntimeException is bad, also we only use try-catch here for the context
+            // manager
             throw new IOException(e);
         }
+        this.records = tempRecords;
     }
 
-    public void saveToFile() throws IOException {
+    public final void saveToFile() throws IOException {
         try (var writer = new BufferedWriter(new FileWriter(this.filename, false))) {
             writer.write(""); // clear and rewrite each emplyee user seperately on each line
             for (var r : this.records) {

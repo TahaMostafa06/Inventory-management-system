@@ -11,19 +11,19 @@ public class AdminRole {
 
     public void addEmployee(String employeeId, String name, String email, String address,
             String phoneNumber) {
-        EmployeeUser p1 = new EmployeeUser(employeeId, name, email, address, phoneNumber);
-        database.insertRecord(p1);
+        var p1 = new EmployeeUser(employeeId, name, email, address, phoneNumber);
+        this.database.insertRecord(p1);
     }
 
     public EmployeeUser[] getListOfEmployees() {
-        return database.returnAllRecords().toArray(EmployeeUser[]::new);
+        return this.database.returnAllRecords().toArray(EmployeeUser[]::new);
     }
 
     public void removeEmployee(String key) {
-        database.deleteRecord(key);
+        this.database.deleteRecord(key);
     }
 
     public void logout() throws IOException {
-        database.saveToFile();
+        this.database.saveToFile();
     }
 }
