@@ -81,7 +81,7 @@ public class EmployeeRole {
         try {
             customerProductDatabase.saveToFile();
             productsDatabase.saveToFile();
-        } catch (IOException e) {
+        } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
     }

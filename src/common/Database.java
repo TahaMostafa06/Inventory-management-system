@@ -71,14 +71,14 @@ public abstract class Database<RecordType extends Record> {
         }
     }
 
-    public void saveToFile() {
+    public void saveToFile() throws RuntimeException {
         try (var writer = new BufferedWriter(new FileWriter(this.filename, false))) {
             writer.write(""); // clear and rewrite each emplyee user seperately on each line
             for (var r : this.records) {
                 writer.write(r.lineRepresentation());
                 writer.newLine();
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
