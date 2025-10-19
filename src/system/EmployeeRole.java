@@ -20,6 +20,7 @@ public class EmployeeRole {
     }
 
     public Product[] getListOfProducts() {
+        // momken ne3ml (Product[]) fel awel
         return productsDatabase.returnAllRecords().toArray(Product[]::new);
     }
 
