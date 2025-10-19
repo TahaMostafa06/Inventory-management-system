@@ -11,13 +11,7 @@ import java.util.ArrayList;
 
 public class CustomerProductDatabase {
 
-    
-    private static class CustomerProduct {
-        public CustomerProduct(String cID, String pID, SimpleDateFormat dmy, boolean pay) {
-        }
-    }
-    
-    
+}
     private ArrayList<CustomerProduct> records;
     private String filename;
 
@@ -66,14 +60,18 @@ public class CustomerProductDatabase {
         records.add(record);
     }
     public void deleteRecord(String key){
-        records.remove(key)
-    }
-    public void saveToFile(){
-        BufferedWriter bf = new BufferedWriter(new FileWriter(filename));
         for (int i = 0 ; i < records.size() ; i++ ){
             CustomerProduct p = records.get(i);
-            bw.write(p.getSearchKey());
+            if(key.equals(p.getSearchKey())){
+                records.remove(i);
+            }
         }
-        bw.close;
     }
-}
+    public void saveToFile(){
+        BufferedWriter bw = new BufferedWriter(new FileWriter(filename));
+        for (int i = 0 ; i < records.size() ; i++ ){
+            CustomerProduct p = records.get(i);
+            bw.write(p.lineRepresentation() + "\n");
+        }
+        bw.close();
+    }
