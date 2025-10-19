@@ -112,7 +112,7 @@ public class Lab4 {
             CLASS7: SUCCESSFULL
             CustomerProductDatabase db2;
             try{
-                db2 = new CustomerProductDatabase("CustomerProducts.txt");
+                db2 = new CustomerProductDatabase("CustomersProducts.txt");
                 CustomerProduct cp1 = db2.createRecordFrom("7845345678,P2568,12-02-2022,false");
                 db2.insertRecord(cp1);
                 ArrayList<CustomerProduct> cplist = db2.returnAllRecords();
@@ -132,10 +132,15 @@ public class Lab4 {
             }
         */
         EmployeeRole er;
+        /*
+        CLASS 8: SUCCESSFULL
         try{
             er = new EmployeeRole();
             er.addProduct("P2568","Laptop","Apple","TechSupplier",10,1500);
             er.purchaseProduct("7845345678", "P2568", LocalDate.of(2022, 12, 02));
+            er.purchaseProduct("7845345678", "P2568", LocalDate.of(2025, 10, 06));
+            er.applyPayment("7845345678", LocalDate.of(2022, 12, 02));
+            System.out.println(er.returnProduct("7845345678", "P2568", LocalDate.of(2025, 10, 06), LocalDate.of(2025, 10, 19)));
             Product[] productlist= er.getListOfProducts();
             CustomerProduct[] cproductlist = er.getListOfPurchasingOperations();
             System.out.println("Current Products:");
@@ -146,9 +151,11 @@ public class Lab4 {
             for(CustomerProduct x : cproductlist){
                 System.out.println(x.lineRepresentation());
             }
+            
             er.logout();
         } catch (IOException ex) {
             System.out.println("Exception Error");
         }
+        */
     }
 }

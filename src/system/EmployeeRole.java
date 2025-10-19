@@ -45,19 +45,17 @@ public class EmployeeRole {
 
     public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate,
             LocalDate returnDate) {
-        LocalDate currentDate = LocalDate.now();
-        if (purchaseDate.until(currentDate).getDays() < 14
+        if (purchaseDate.until(returnDate).getDays() >= 14
                 || purchaseDate.until(returnDate).getDays() < 0)
             return -1;
-        CustomerProduct item = new CustomerProduct(customerSSN, productID, purchaseDate);
-        if (customerProductDatabase.contains(item.lineRepresentation()) == false)
+        CustomerProduct CustomerItem = new CustomerProduct(customerSSN, productID, purchaseDate);
+        if (customerProductDatabase.contains(CustomerItem.getSearchKey()) == false)
             return -1;
         Product[] ProductList = this.getListOfProducts();
         for (int i = 0; i < ProductList.length; i++) {
             if (ProductList[i].getSearchKey().equals(productID)) {
-                this.productsDatabase.deleteRecord(ProductList[i].lineRepresentation());
-                ProductList[i].setQuantity(ProductList[i].getQuantity() + 1);
-                customerProductDatabase.deleteRecord(item.lineRepresentation());
+                this.productsDatabase.getRecord(ProductList[i].getSearchKey()).setQuantity(ProductList[i].getQuantity() + 1);
+                this.customerProductDatabase.deleteRecord(CustomerItem.getSearchKey());
                 return ProductList[i].getPrice();
             }
         }
@@ -67,8 +65,8 @@ public class EmployeeRole {
     public boolean applyPayment(String customerSSN, LocalDate purchaseDate) {
         for (CustomerProduct product : customerProductDatabase.returnAllRecords()) {
             if (product.getCustomerSSN().equals(customerSSN)
-                    && product.getPurchaseDate() == purchaseDate) {
-                if (product.isPaid() == false)
+                    && product.getPurchaseDate().compareTo(purchaseDate) == 0) {
+                if (product.isPaid() == true)
                     return false;
                 product.setPaid(true);
                 return true;
