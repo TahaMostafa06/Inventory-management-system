@@ -5,8 +5,8 @@ import java.io.IOException;
 public class AdminRole {
     private EmployeeUserDatabase database;
 
-    public AdminRole(EmployeeUserDatabase database) {
-        this.database = database;
+    public AdminRole() throws Throwable{
+        this.database = new EmployeeUserDatabase("Employees.txt");
     }
 
     public void addEmployee(String employeeId, String name, String email, String address,

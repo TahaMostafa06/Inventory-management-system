@@ -38,6 +38,7 @@ public abstract class Database<RecordType extends Record> {
 
     // Setters
     public final void insertRecord(RecordType record) {
+        if (!this.contains(record.getSearchKey()))
         this.records.add(record);
     }
 

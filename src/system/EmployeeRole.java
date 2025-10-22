@@ -13,6 +13,13 @@ public class EmployeeRole {
     }
 
     public void addProduct(String productID, String productName, String manufacturerName,
+            String supplierName, int quantity) {
+        var item = new Product(productID, productName, manufacturerName, supplierName, quantity,
+                0);
+        this.productsDatabase.insertRecord(item);
+    }
+
+    public void addProduct(String productID, String productName, String manufacturerName,
             String supplierName, int quantity, float price) {
         var item = new Product(productID, productName, manufacturerName, supplierName, quantity,
                 price);
@@ -40,7 +47,7 @@ public class EmployeeRole {
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate,
